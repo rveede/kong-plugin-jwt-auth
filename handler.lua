@@ -1,7 +1,7 @@
 local BasePlugin = require "kong.plugins.base_plugin"
-local responses = require "kong.tools.responses"
 local constants = require "kong.constants"
 local jwt_decoder = require "kong.plugins.jwt.jwt_parser"
+local responses = kong.response
 
 local ngx_error = ngx.ERR
 local ngx_debug = ngx.DEBUG
@@ -14,7 +14,7 @@ local JWTAuthHandler = BasePlugin:extend()
 
 
 JWTAuthHandler.PRIORITY = 950
-JWTAuthHandler.VERSION = "0.1.0"
+JWTAuthHandler.VERSION = "0.2.0"
 
 
 function JWTAuthHandler:new()
