@@ -114,7 +114,7 @@ function JWTAuthHandler:access(conf)
   if not token then
     ngx_log(ngx_error, "[jwt-auth plugin] Cannot get JWT token, add the ",
                        "JWT plugin to be able to use the JWT-Auth plugin")
-    return responses.response.exit(403, "You cannot consume this service")
+    return responses.exit(403, "You cannot consume this service")
   end
 
   -- decode token to get roles claim
@@ -129,7 +129,7 @@ function JWTAuthHandler:access(conf)
 
   -- check if no roles claimed..
   if not roles then
-    return responses.response.exit(403, "You cannot consume this service")
+    return responses.exit(403, "You cannot consume this service")
   end
 
   -- if the claim is a string (single role), make it a table
@@ -143,11 +143,11 @@ function JWTAuthHandler:access(conf)
   end
 
   if conf.policy == policy_ANY and not role_in_roles_claim(conf.roles, roles) then
-    return responses.response.exit(403, "You cannot consume this service")
+    return responses.exit(403, "You cannot consume this service")
   end
 
   if conf.policy == policy_ALL and not all_roles_in_roles_claim(conf.roles, roles) then
-    return responses.response.exit(403, "You cannot consume this service")
+    return responses.exit(403, "You cannot consume this service")
   end
 
 end
