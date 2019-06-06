@@ -15,7 +15,7 @@ local JWTAuthHandler = BasePlugin:extend()
 
 
 JWTAuthHandler.PRIORITY = 950
-JWTAuthHandler.VERSION = "0.2.1"
+JWTAuthHandler.VERSION = "0.2.3"
 
 
 function JWTAuthHandler:new()
