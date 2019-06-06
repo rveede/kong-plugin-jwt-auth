@@ -3,6 +3,6 @@ return {
   fields = {
     roles = {type = "array", default = {}},
     roles_claim_name = {type = "string", default = "roles"},
-    policy = {type = "string", default = "any", enum = {"any", "all"} }
+    policy = {type = "string", default = "any", enum = {"none", "any", "all"} }
   }
 }

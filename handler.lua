@@ -7,6 +7,7 @@ local ngx_error = ngx.ERR
 local ngx_debug = ngx.DEBUG
 local ngx_log = ngx.log
 
+local policy_NONE = 'none'
 local policy_ALL = 'all'
 local policy_ANY = 'any'
 
@@ -14,7 +15,7 @@ local JWTAuthHandler = BasePlugin:extend()
 
 
 JWTAuthHandler.PRIORITY = 950
-JWTAuthHandler.VERSION = "0.2.0"
+JWTAuthHandler.VERSION = "0.2.1"
 
 
 function JWTAuthHandler:new()
@@ -128,7 +129,7 @@ function JWTAuthHandler:access(conf)
   local roles_table = {}
 
   -- check if no roles claimed..
-  if not roles then
+  if not roles and not conf.policy == policy_NONE then
     return responses.exit(403, "You cannot consume this service")
   end
 

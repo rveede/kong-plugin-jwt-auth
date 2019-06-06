@@ -1,11 +1,11 @@
 package = "kong-plugin-jwt-auth"
-version = "0.2.0-1"
+version = "0.2.1-1"
 local pluginName = package:match("^kong%-plugin%-(.+)$")
 
 supported_platforms = {"linux", "macosx"}
 source = {
    url = "git+https://github.com/rveede/kong-plugin-jwt-auth",
-   tag = "v0.2.0"
+   tag = "v0.2.1"
 }
 
 description = {
